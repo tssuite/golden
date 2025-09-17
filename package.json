@@ -1,9 +1,9 @@
 {
-  "name": "@tssuite/template-project",
-  "version": "0.0.17",
-  "description": "tssuite template-project description",
-  "homepage": "https://github.com/tssuite/template-project",
-  "bugs": "https://github.com/tssuite/template-project/issues",
+  "name": "@tssuite/golden",
+  "version": "0.0.18",
+  "description": "tssuite golden description",
+  "homepage": "https://github.com/tssuite/golden",
+  "bugs": "https://github.com/tssuite/golden/issues",
   "private": false,
   "license": "MIT",
   "engines": {
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tssuite/template-project.git"
+    "url": "git+https://github.com/tssuite/golden.git"
   },
-  "main": "dist/template-project.js",
+  "main": "dist/golden.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"

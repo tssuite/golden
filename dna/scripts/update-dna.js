@@ -7,7 +7,7 @@
  */
 
 // A javascript that downloads the latest documentation and settings from the
-// template-project
+// golden
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
@@ -36,11 +36,11 @@ const files = [
 
 const filesToBeDeleted = [
   'dna/scripts/update-doc-settings-and-scripts.js',
-  'dna/doc/workflows/update-from-template-project.md',
+  'dna/doc/workflows/update-from-golden.md',
 ];
 
-const templateRepo = 'https://github.com/tssuite/template-project.git';
-const localRepoPath = path.resolve(__dirname, '../../template-project');
+const templateRepo = 'https://github.com/tssuite/golden.git';
+const localRepoPath = path.resolve(__dirname, '../../golden');
 const ownRepoPath = path.resolve(__dirname, '..');
 
 const mustBeClean = false;
@@ -49,17 +49,17 @@ function ensureTemplateRepoUpdated() {
   if (fs.existsSync(localRepoPath)) {
     if (mustBeClean) {
       if (isCleanRepo(localRepoPath)) {
-        console.error(blue('../template-project') + red(' is not clean. '));
+        console.error(blue('../golden') + red(' is not clean. '));
         console.log(yellow('Please commit or stash your changes.'));
         process.exit(1);
       }
 
-      console.log(gray('Updating existing template-project...'));
+      console.log(gray('Updating existing golden...'));
       execSync('git fetch', { cwd: localRepoPath, stdio: 'inherit' });
       execSync('git pull', { cwd: localRepoPath, stdio: 'inherit' });
     }
   } else {
-    console.log(gray('Cloning template-project into ../'));
+    console.log(gray('Cloning golden into ../'));
     execSync(`git clone ${templateRepo} "${localRepoPath}"`, {
       stdio: 'inherit',
     });
@@ -106,7 +106,7 @@ function deleteFiles() {
   }
 }
 
-function replaceTemplateProject() {
+function replaceGolden() {
   const pkgFile = path.join(process.cwd(), 'package.json');
   const pkg = JSON.parse(fs.readFileSync(pkgFile, 'utf8'));
   const projectName = pkg.name.replace('@tssuite/', '');
@@ -117,7 +117,7 @@ function replaceTemplateProject() {
     const filePath = path.join(process.cwd(), file);
     if (fs.existsSync(filePath)) {
       let content = fs.readFileSync(filePath, 'utf8');
-      content = content.replace(/template-project/g, projectName);
+      content = content.replace(/golden/g, projectName);
       fs.writeFileSync(filePath, content);
       console.log(gray('Replaced in: ' + file));
     } else {
@@ -131,7 +131,7 @@ function main() {
     ensureTemplateRepoUpdated();
     copyFiles();
     deleteFiles();
-    replaceTemplateProject();
+    replaceGolden();
     console.log(green('Done.'));
   } catch (err) {
     console.error(red('Error:', err.message));
