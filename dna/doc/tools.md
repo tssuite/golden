@@ -34,7 +34,7 @@ To create a new repo checkout [create-new-repo.md](create-new-repo.md)
 
 Checkout [./README.trouble.md](../../README.trouble.md)
 
-Visit <https://github.com/tssuite/template-project/issues>
+Visit <https://github.com/tssuite/golden/issues>
 
 Check if there is already an issue for your problem.
 

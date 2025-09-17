@@ -6,11 +6,11 @@
 
 import { describe, expect, it } from 'vitest';
 
-import { TemplateProject } from '../src/template-project';
+import { Golden } from '../src/golden';
 
-describe('TemplateProject', () => {
+describe('Golden', () => {
   it('should validate a template', () => {
-    const templateProject = TemplateProject.example;
-    expect(templateProject).toBeDefined();
+    const golden = Golden.example;
+    expect(golden).toBeDefined();
   });
 });

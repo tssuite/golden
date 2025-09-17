@@ -41,7 +41,7 @@ function getPRStatus() {
 async function checkIfPipelineHasFailed() {
   try {
     const json = runCommand(
-      'gh run list --repo tssuite/template-project --limit 1 --json status,conclusion',
+      'gh run list --repo tssuite/golden --limit 1 --json status,conclusion',
       true,
       false,
     ).trim();
