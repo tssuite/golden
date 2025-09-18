@@ -4,12 +4,21 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
+import { builtinModules } from 'node:module';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
+import pkg from './package.json';
+
 export default defineConfig({
   plugins: [dts({ include: ['src/**/*'] })],
+
+  // Make vite building this package for node.js
+  resolve: {
+    mainFields: ['module', 'jsnext:main', 'main'], // Do not run in browser
+    conditions: ['node', 'import'], // node-spezifische Exports
+  },
 
   build: {
     copyPublicDir: false,
@@ -22,10 +31,10 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        '@tssuite/tssuite',
-        '@tssuite/json',
-        '@tssuite/hash',
-        // Add all peer depencies from package.json here
+        ...builtinModules, // 'fs', 'path', ...
+        ...builtinModules.map((m) => `node:${m}`), // 'node:fs', 'node:path', ...
+        ...Object.keys(pkg.dependencies ?? {}),
+        ...Object.keys(pkg.peerDependencies ?? {}),
       ],
       output: {
         globals: {},
