@@ -5,7 +5,7 @@
 // found in the LICENSE file in the root of this package.
 
 import * as fs from 'fs';
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir, rm, writeFile } from 'fs/promises';
 import { tmpdir } from 'os';
 import * as path from 'path';
 import { describe, expect, it } from 'vitest';
@@ -38,7 +38,7 @@ describe('Tools', () => {
         message = e.message.toString().split('\n');
       }
       expect(message).toEqual(['No package.json found.']);
-      fs.rmdirSync(tmpDir, { recursive: true });
+      await rm(tmpDir, { recursive: true });
     });
   });
 
@@ -64,17 +64,15 @@ describe('Tools', () => {
     it('with special path', () => {
       const stackTrace = [
         'Error: ',
-        '    at goldenDir (/Users/gatzsche/dev/tssuite/golden/src/tools.ts:72:18)',
-        '    at writeGolden (/Users/gatzsche/dev/tssuite/golden/src/golden.ts:20:28)',
-        '    at testGolden (/Users/gatzsche/dev/tssuite/golden/test/golden.spec.ts:20:13)',
-        '    at /Users/gatzsche/dev/tssuite/golden/test/golden.spec.ts:36:13',
-        '    at file:///Users/gatzsche/dev/tssuite/golden/node_modules/.pnpm/@vitest+runner@3.2.4/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11',
+        '    at goldenDir (/Users/xyz/dev/tssuite/golden/src/tools.ts:72:18)',
+        '    at writeGolden (/Users/xyz/dev/tssuite/golden/src/golden.ts:20:28)',
+        '    at testGolden (/Users/xyz/dev/tssuite/golden/test/golden.spec.ts:20:13)',
+        '    at /Users/xyz/dev/tssuite/golden/test/golden.spec.ts:36:13',
+        '    at file:///Users/xyz/dev/tssuite/golden/node_modules/.pnpm/@vitest+runner@3.2.4/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11',
       ].join('\n');
 
       const dir = callerPath(stackTrace);
-      expect(dir).toBe(
-        '/Users/gatzsche/dev/tssuite/golden/test/golden.spec.ts',
-      );
+      expect(dir).toBe('/Users/xyz/dev/tssuite/golden/test/golden.spec.ts');
     });
 
     it('throws when no path is found', () => {
@@ -96,9 +94,7 @@ describe('Tools', () => {
     describe('returns the goldens dir for the current test file', () => {
       it('with the current test file', async () => {
         const result = await goldenDir(new Error().stack || '');
-        expect(result).toBe(
-          '/Users/gatzsche/dev/tssuite/golden/test/goldens/tools',
-        );
+        expect(result).toContain('golden/test/goldens/tools');
       });
     });
 
@@ -131,7 +127,7 @@ describe('Tools', () => {
         expect(message).toEqual([
           'writeGolden(...) must only be called from files within test',
         ]);
-        fs.rmdirSync(tmpDir, { recursive: true });
+        await rm(tmpDir, { recursive: true });
       });
     });
   });
