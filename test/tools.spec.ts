@@ -16,12 +16,12 @@ describe('Tools', () => {
   describe('projectRoot(path)', () => {
     describe('returns the project root of the node project on path', () => {
       it('with path being a directory', async () => {
-        const cwd = process.cwd();
+        const cwd = process.cwd().replaceAll('\\', '/');
         await expect(projectRoot(path.join(cwd, 'test'))).resolves.toBe(cwd);
       });
 
       it('with path being a file', async () => {
-        const cwd = process.cwd();
+        const cwd = process.cwd().replaceAll('\\', '/');
         await expect(
           projectRoot(path.join(cwd, 'test', 'tools.spec.ts')),
         ).resolves.toBe(cwd);
