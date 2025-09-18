@@ -28,13 +28,13 @@
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
-    "@types/node": "^24.5.1",
+    "@types/node": "^24.5.2",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "@vitest/coverage-v8": "^3.2.4",
     "cross-env": "^10.0.0",
     "eslint": "^9.35.0",
-    "eslint-plugin-jsdoc": "^58.1.0",
+    "eslint-plugin-jsdoc": "^58.1.1",
     "eslint-plugin-tsdoc": "^0.4.0",
     "globals": "^16.4.0",
     "jsdoc": "^4.0.4",
@@ -53,5 +53,8 @@
       "esbuild"
     ]
   },
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.17.0",
+  "dependencies": {
+    "@rljson/json": "^0.0.21"
+  }
 }
