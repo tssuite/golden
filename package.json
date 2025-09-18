@@ -1,6 +1,6 @@
 {
   "name": "@tssuite/golden",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Create golden files right within your tests",
   "homepage": "https://github.com/tssuite/golden",
   "bugs": "https://github.com/tssuite/golden/issues",
@@ -57,6 +57,7 @@
   "packageManager": "pnpm@10.17.0",
   "dependencies": {},
   "peerDependencies": {
-    "@rljson/json": "^0.0.21"
+    "@rljson/json": "^0.0.21",
+    "@tssuite/project-root": "0.0.17"
   }
 }

@@ -11,6 +11,9 @@ importers:
       '@rljson/json':
         specifier: ^0.0.21
         version: 0.0.21
+      '@tssuite/project-root':
+        specifier: 0.0.17
+        version: 0.0.17
     devDependencies:
       '@types/node':
         specifier: ^24.5.2
@@ -522,6 +525,10 @@ packages:
 
   '@rushstack/ts-command-line@5.0.3':
     resolution: {integrity: sha512-bgPhQEqLVv/2hwKLYv/XvsTWNZ9B/+X1zJ7WgQE9rO5oiLzrOZvkIW4pk13yOQBhHyjcND5qMOa6p83t+Z66iQ==}
+
+  '@tssuite/project-root@0.0.17':
+    resolution: {integrity: sha512-q076C56RTosctzH2PttSVo+jyZyMe7O4DB2RzKvYZOf0zqvvRo6S33qMvLdeznBUb1znsnygYUgakQ+gg/K5EA==}
+    engines: {node: '>=22.14.0'}
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -2111,6 +2118,8 @@ snapshots:
       string-argv: 0.3.2
     transitivePeerDependencies:
       - '@types/node'
+
+  '@tssuite/project-root@0.0.17': {}
 
   '@types/argparse@1.0.38': {}
 
