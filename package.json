@@ -55,7 +55,8 @@
     ]
   },
   "packageManager": "pnpm@10.17.0",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "@rljson/json": "^0.0.21"
   }
 }
