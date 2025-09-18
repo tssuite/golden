@@ -57,6 +57,7 @@
   "packageManager": "pnpm@10.17.0",
   "dependencies": {},
   "peerDependencies": {
-    "@rljson/json": "^0.0.21"
+    "@rljson/json": "^0.0.21",
+    "@tssuite/project-root": "0.0.17"
   }
 }
