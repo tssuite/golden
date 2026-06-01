@@ -1,0 +1,19 @@
+{
+  // The root tsconfig excludes `typescript/test/**` so the build only emits
+  // declarations for the public API. That leaves the test files without a
+  // covering project, so editors type-check them with an inferred config that
+  // lacks `"types": ["node"]` — hence "Cannot find name 'node:fs/promises'".
+  // This config re-includes the tests (inheriting node types) for type-check
+  // only; it never emits and is not part of the build.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "declaration": false,
+    "declarationMap": false,
+    "rootDir": "..",
+    "types": ["vitest/globals", "node"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
+}
