@@ -67,6 +67,27 @@ describe('Tools', () => {
         const result = await goldenDir(new Error().stack || '');
         expect(result).toContain('golden/test/goldens/tools');
       });
+
+      it('with a special cases', async () => {
+        const stackTrace = [
+          'Error:',
+          '    at goldenDir (file:///my_project/node_modules/.pnpm/@tssuite+golden@0.0.3_@rljson+json@0.0.21/node_modules/@tssuite/golden/dist/golden.js:30:18)',
+          '    at writeBinaryGolden (file:///my_project/node_modules/.pnpm/@tssuite+golden@0.0.3_@rljson+json@0.0.21/node_modules/@tssuite/golden/dist/golden.js:61:28)',
+          '    at /my_project/typescript/test/scale_glb_bytes.node.spec.ts:45:11',
+          '    at file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20',
+          '    at file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:2955:7',
+          '    at callAroundHooks (file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:2663:3)',
+          '    at callAroundEachHooks (file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:2799:2)',
+          '    at runTest (file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:2940:4)',
+          '    at file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:3159:10',
+          '    at callAroundHooks (file:///my_project/node_modules/.pnpm/@vitest+runner@4.1.7/node_modules/@vitest/runner/dist/chunk-artifact.js:2663:3)',
+        ].join('\n');
+
+        const result = await goldenDir(stackTrace, '/my_project/');
+        expect(result).toBe(
+          '/my_project/typescript/test/goldens/scale_glb_bytes.node',
+        );
+      });
     });
 
     describe('throws', () => {

@@ -37,22 +37,31 @@ export function callerPath(stackTrace: string): string {
 /// Derives the goldens directory from a stack trace
 export async function goldenDir(
   stackTrace: string | undefined = undefined,
+  testProjectRoot?: string,
 ): Promise<string> {
   stackTrace ??= new Error().stack!;
   const cp = callerPath(stackTrace!);
 
-  const root = await projectRoot(cp);
+  const root = testProjectRoot ?? (await projectRoot(cp));
   const relativePath = path.relative(root, cp).replace(/\\/g, '/');
-  if (!/^test[\/\\]/.test(relativePath)) {
+
+  // The test directory may live directly in the project root, or inside any
+  // subfolder (e.g. `typescript/test`). The goldens dir is rooted at whatever
+  // path precedes the `test/` segment.
+  const match = relativePath.match(/^(?:(.*)\/)?test\/(.*)$/);
+  if (!match) {
     throw new Error(
       'writeGolden(...) must only be called from files within test',
     );
   }
+  const prefix = match[1];
+  const fileName = match[2];
+  const testRoot = prefix ? path.join(root, prefix) : root;
 
   // test/write_golden_test.dart -> write_golden
-  const directory = relativePath.substring(5, relativePath.length - 8);
+  const directory = fileName.substring(0, fileName.length - 8);
   const result = path
-    .join(root, 'test', 'goldens', directory)
+    .join(testRoot, 'test', 'goldens', directory)
     .replace(/\\/g, '/');
 
   return result;

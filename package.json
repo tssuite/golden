@@ -20,11 +20,11 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "pnpx vite build && tsc && node dna/scripts/copy-readme-to-dist.js",
-    "test": "pnpx vitest run --coverage && pnpm run lint",
+    "build": "vite build && tsc && node dna/scripts/copy-readme-to-dist.js",
+    "test": "vitest run --coverage && pnpm run lint",
     "prebuild": "npm run test",
     "prepublishOnly": "npm run build",
-    "lint": "pnpx eslint",
+    "lint": "eslint",
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
@@ -49,12 +49,7 @@
     "vitest": "^3.2.4",
     "vitest-dom": "^0.1.1"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  },
-  "packageManager": "pnpm@10.17.0",
+  "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1",
   "dependencies": {},
   "peerDependencies": {
     "@rljson/json": "^0.0.21",
