@@ -8,9 +8,8 @@ import * as fs from 'fs';
 import { rm, writeFile } from 'fs/promises';
 import { tmpdir } from 'os';
 import * as path from 'path';
-import { describe, expect, it } from 'vitest';
 
-import { callerPath, goldenDir } from '../src/tools';
+import { callerPath, goldenDir } from '../src/tools.ts';
 
 describe('Tools', () => {
   describe('callerPath(stackTrace)', () => {

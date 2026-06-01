@@ -6,9 +6,8 @@
 
 import { constants } from 'fs';
 import { access, readFile } from 'fs/promises';
-import { describe, expect, it } from 'vitest';
 
-import { writeBinaryGolden, writeGolden } from '../src';
+import { writeBinaryGolden, writeGolden } from '../src/index.ts';
 
 describe('writeGolden', () => {
   describe('writeGolden', () => {
