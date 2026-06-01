@@ -1,6 +1,6 @@
 {
   "name": "@tssuite/golden",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Create golden files right within your tests",
   "homepage": "https://github.com/tssuite/golden",
   "bugs": "https://github.com/tssuite/golden/issues",
