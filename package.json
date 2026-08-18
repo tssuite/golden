@@ -31,7 +31,7 @@
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
-    "@rljson/json": "^0.0.21",
+    "@rljson/json": "^0.0.23",
     "@tssuite/project-root": "0.0.17",
     "@types/node": "^26.2.0",
     "@typescript-eslint/eslint-plugin": "^8.67.0",

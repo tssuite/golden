@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@rljson/json':
-        specifier: ^0.0.21
-        version: 0.0.21
+        specifier: ^0.0.23
+        version: 0.0.23
       '@tssuite/project-root':
         specifier: 0.0.17
         version: 0.0.17
@@ -348,8 +348,8 @@ packages:
   '@oxc-project/types@0.144.0':
     resolution: {integrity: sha512-nuhZIOLuI6TFQ32I/WnUx+SCPY7SdSKwgnFHydAuoS1+Z4BRcaP+RRJmGzl9lw+0OFF7UmaESf7KQRXaNLHypg==}
 
-  '@rljson/json@0.0.21':
-    resolution: {integrity: sha512-oNDY2B6HgHSzbaRh2fU8tTEEChuCzJU2sF9yzLYzS9jryT13XyfvSO13WkkPXgpMCe78AuIaGwbusNg8YARrdA==}
+  '@rljson/json@0.0.23':
+    resolution: {integrity: sha512-ViYo8zx0z/SomjpS2f+xK+tS7HTwZI1HzRarHpXO3spVjpaF+GKCa7HgDXoV/Wc+zsliDzo8wz7S5NFb0yZaow==}
     engines: {node: '>=22.14.0'}
 
   '@rolldown/binding-android-arm64@1.2.4':
@@ -1774,7 +1774,7 @@ snapshots:
 
   '@oxc-project/types@0.144.0': {}
 
-  '@rljson/json@0.0.21': {}
+  '@rljson/json@0.0.23': {}
 
   '@rolldown/binding-android-arm64@1.2.4':
     optional: true
