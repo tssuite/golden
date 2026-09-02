@@ -2,5 +2,4 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - '@tssuite/helix-js@0.1.0'
-overrides:
-  "@tssuite/project-root": link:../project-root
+  - '@tssuite/project-root@0.0.18'
