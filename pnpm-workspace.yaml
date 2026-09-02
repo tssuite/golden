@@ -1,2 +1,4 @@
 allowBuilds:
   esbuild: true
+overrides:
+  "@tssuite\/project-root": link:../project-root

@@ -4,16 +4,20 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@tssuite/project-root': link:../project-root
+
 importers:
 
   .:
+    dependencies:
+      '@tssuite/project-root':
+        specifier: link:../project-root
+        version: link:../project-root
     devDependencies:
       '@rljson/json':
         specifier: ^0.0.23
         version: 0.0.23
-      '@tssuite/project-root':
-        specifier: 0.0.17
-        version: 0.0.17
       '@types/node':
         specifier: ^26.2.0
         version: 26.2.0
@@ -460,10 +464,6 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
-  '@tssuite/project-root@0.0.17':
-    resolution: {integrity: sha512-q076C56RTosctzH2PttSVo+jyZyMe7O4DB2RzKvYZOf0zqvvRo6S33qMvLdeznBUb1znsnygYUgakQ+gg/K5EA==}
-    engines: {node: '>=22.14.0'}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -1834,8 +1834,6 @@ snapshots:
   '@sindresorhus/base62@1.0.0': {}
 
   '@standard-schema/spec@1.1.0': {}
-
-  '@tssuite/project-root@0.0.17': {}
 
   '@types/chai@5.2.3':
     dependencies:
